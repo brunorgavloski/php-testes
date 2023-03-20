@@ -14,6 +14,16 @@ $notas = [
         'nota' => 9,
 
     ],
+    [
+        'Jane' => 'Ana',
+        'nota' => 5,
+
+    ],
+    [
+        'Pedro' => 'Ana',
+        'nota' => 2,
+
+    ],
     //a função de comparação precisa retornar um inteiro
     //menor que, igual a, ou maior que zero. Se o primeiro argumento
     //é considerado menor que, igual a, ou maior que o segundo
