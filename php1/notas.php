@@ -4,7 +4,7 @@ $notas = [
     'ana' => null,
     'Joao' => 8,
     'Maria' => 9,
-    'Robert' => 12,
+    'Robert' => '12',
     'Beuno' => 2,
 
 ];
@@ -23,8 +23,12 @@ if (gettype($notas) == 'array') {
 //var_dump(isset($notas['ana'])); // retorna false pois o valor associado é null
 //var_dump(isset($notas['Maria'])); //retorna true pois existe o valor e com uma associação
 
-echo 'Alguem tirou 12?' . PHP_EOL;
-var_dump(in_array(12, $notas));
+//echo 'Alguem tirou 12?' . PHP_EOL;
+//var_dump(in_array(12, $notas)); //retorna true
+//var_dump(in_array(12, $notas, true)); //retorna false pois estamos usando o strict
+
+echo 'Alguem tirou 8' . PHP_EOL;
+echo array_search(8, $notas) . PHP_EOL; //procra dentro do array pelo valor da chave
 
 /* 
 -> verfica se João fez a prova com  a função abaixo
@@ -41,4 +45,26 @@ var_dump(in_array(12, $notas));
 -> in_array(); verifica se o valor existe.
 -> isset(); verifica se chave existe e não é nula;
 
+-> Podemos imaginar essa situação:
+    var_dump(in_array(12, $notas));
+    Em determinado momento esse array retornou para nos com o valor 12 em formato de 
+    string, sendo '12', no caso, entre aspas. Executando podeviamos ver que recebemos um true nessa
+    verificação. Por baixo dos panos o php faz a seguinte comparação:
+
+        12 == '12'
+
+    Assumindo de forma inteligente que os dois são iguais.
+    Caso, não queiramos que isso ocorra podemos usar o stict, na forma a seguir:
+
+        var_dump(in_array(12, $notas, true));
+    
+    Nesse caso retornará o valor false pois estamos fazendo a comparação exata 
+    por assim dizer
+    
+    Podemos também fazer buscar pelo valor do item usando no caso a cima o valor 8
+    que é referencia de Joao. Para isso usamos a função:
+
+        echo 'Alguem tirou 8' . PHP_EOL;
+        echo array_search(8, $notas);
+        
 */
